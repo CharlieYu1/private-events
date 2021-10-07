@@ -13,9 +13,8 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = current_user.organized_events.build
+        @event = Event.find(params[:id])
     end
-
 
     def create
         @event = current_user.organized_events.build(event_params)
