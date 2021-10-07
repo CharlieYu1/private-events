@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bulma";
+
+ .box {
+     background-color: hsl(150, 75%, 90%);
+ }

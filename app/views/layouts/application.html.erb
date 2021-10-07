@@ -7,10 +7,22 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+      <p>You are signed in as <%= current_user.email %></p>
+      <p><%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "button is-info" %></p>
+    <% else %>
+      <p><%= link_to 'Login', new_user_session_path, class: "button is-info" %></p>
+      <p><%= link_to 'Sign Up', new_user_registration_path, class: "button is-info is-inverted" %></p>
+
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
