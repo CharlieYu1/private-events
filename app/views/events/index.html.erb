@@ -1,10 +1,15 @@
 
+
+
 <div class="columns">
     <div class="column">
 
     </div>
     <div class="column is-one-third">
-        <% @events.each do |event| %>
+        <div class="is-family-secondary" id="future_events">
+            Future Events
+        </div>
+        <% @events.future.each do |event| %>
             <div class="block">
                 <div class="box is-info">
                     <span>Creator</span>
@@ -23,10 +28,35 @@
                 </div>
             </div>
         <% end %>
+        <div class="is-family-secondary" id="past_events">
+            Past Events
+        </div>
+        <% @events.past.each do |event| %>
+            <div class="block">
+                <div class="box is-info">
+                    <span>Creator</span>
+                    <div class="is-size-4"><%= event.creator.email %></div>
+                    <span>Location</span>
+                    <div class="is-size-4"><%= event.location %></div>
+                    <span>Date</span>
+                    <div class="is-size-4"><%= event.date %></div>
+                    <nav class="level">
+                        <div class="level-left is-mobile">
+                            <%= link_to event, class: "level-item" do %>
+                                <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+                            <% end %>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        <% end %>        
     </div>
     <div class="column is-one-third">
         <% if user_signed_in? %>
             <%= render 'form' %>
+        <% end %>
+        <% if user_signed_in? %>
+            <%= render 'attended_events' %>
         <% end %>
     </div>
     <div class="column">

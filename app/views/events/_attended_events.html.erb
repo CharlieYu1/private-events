@@ -1,0 +1,24 @@
+Future Events to Attend:
+<% current_user.attended_events.future.each do |event| %>
+
+    <div class="block">
+        <div class="box is-info">
+            <p><%= event.creator.email %></p>
+            <p><%= event.location %></p>
+            <p><%= event.date %></p>
+        </div>
+    </div>
+
+<% end %>
+Attended Events:
+<% current_user.attended_events.past.each do |event| %>
+
+    <div class="block">
+        <div class="box is-info">
+            <p><%= event.creator.email %></p>
+            <p><%= event.location %></p>
+            <p><%= event.date %></p>
+        </div>
+    </div>
+
+<% end %>
